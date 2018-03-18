@@ -1,0 +1,84 @@
+ 2018년 3월 16일, 저번 미팅에 조교님이 이번 논문에 파이썬을 쓰는게 좋을 것 같다고 하셨다. 이전에 파이썬을 사용해 본 적이 없어서 걱정하고 있었는데 조교님이 연습할 겸 해서 파이썬으로 계산기 프로그램을 한번 만들어 보라고 하셨다. 그래서 오늘 python 3.6.2, Anaconda3, Jupyter notebook을 설치하여 파이썬 개발 환경을 구축하고 시작 해 보기로 했다. 참고로 이전 미팅에서 이틀 후인 3월 18일 까지 주제를 완전히 정하기로 조교님과 합의를 했다. 아래는 계산기 기능을 구현한 파이썬 코드이다. 
+
+import sys
+import os
+
+operand1 = []
+operand2 = []
+operator = []
+result = []
+operation = 0
+
+def isNumber(s):
+  try:
+    float(s)
+    return True
+  except ValueError:
+    return False
+
+while 1:
+    print("+-------------------+")
+    print("l 1. 계산하기       l")
+    print("l 2. 계산기록       l")
+    print("l 3. 프로그램 종료  l")
+    print("+-------------------+")
+
+    while 1:
+        n = input("원하시는 번호를 입력하세요: ")
+        if n == '1' or n == '2' or n == '3':
+            break
+        else :
+            print("올바른 번호를 입력하세요!")
+            
+    if n == '1':
+        while 1:
+            opd1 = input("첫번째 피연산자를 입력하세요: ")
+            if isNumber(opd1):
+                opd1 = float(opd1)
+                break
+            else:
+                print("올바른 피연산자를 입력하세요!")
+        while 1:
+            opr = input("연산자를 입력하세요(+,-,*,/): ")
+            if opr == '+' or opr == '-' or opr == '*' or opr == '/':
+                break
+            else:
+                print("올바른 연산자를 입력하세요!")
+        while 1:
+            opd2 = input("두번째 피연산자를 입력하세요: ")
+            if isNumber(opd2):
+                opd2 = float(opd2)
+                break
+            else:
+                print("올바른 피연산자를 입력하세요!")
+                
+        if opr == '+':
+            res = opd1 + opd2
+        elif opr == '-':
+            res = opd1 - opd2
+        elif opr == '*':
+            res = opd1 * opd2
+        elif opr == '/':
+            res = opd1 / opd2
+        print("계산결과: " + str(opd1) + " " + opr + " " + str(opd2) + " = " + str(res))
+
+        operand1.append(opd1)
+        operand2.append(opd2)
+        operator.append(opr)
+        result.append(res)
+        operation += 1
+
+    elif n == '2':
+        i = 0
+        if operation == 0:
+            print("계산기록이 없습니다..")
+        else:
+            print("-------계산기록------")
+            while i < operation :
+                print(str(i+1) + ": " + str(operand1[i]) + " " + operator[i] + " " + str(operand2[i]) + " = " + str(result[i]))
+                i += 1
+
+    else:
+        print("프로그램을 종료합니다!")
+        sys.exit()
+        
