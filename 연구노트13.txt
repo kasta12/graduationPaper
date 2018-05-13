@@ -1,0 +1,11 @@
+2018년 5월 13일 조교님이 말씀해 주신대로 Scikit-learn라이브러리에 대해 조사해 보았다.
+조사해 본 결과 여러 변수를 넣어서 결과값을 예측하는 방법이 네가지 정도가 있었다. 이 네가지를 정리하면 다음과 같다.
+
+Multivariate regression methods:
+Linear regression: 이 넷중에 제일 부정확함
+BayesianRidge regression: 괜찮아 보임
+Lasso regression: 괜찮아 보임. 검색해본 결과 Linear regression과 Ridge regression보다 성능이 좋다고 함 
+Elastic Net regression: 위 모든 방법보다 성능이 좋음. 하지만 데이터가 많을때 제 성능을 발휘함. 
+
+나의 논문의 경우 학습데이터가 그렇게 많지 않으므로 네번째 방법은 사용하지 않기로 했다. 따라서 나머지 방법들중 제일 정확한 Lasso regression방법을 사용해 보기로 했다.
+그리고 조교님의 조언대로 정확히 어떤 데이터들을 input값들로 넣고 어떤 output을 예측할지 정할지 생각해 보았지만 잘 떠오르지 않아 일단 오늘은 여기서 마무리 하였다.
